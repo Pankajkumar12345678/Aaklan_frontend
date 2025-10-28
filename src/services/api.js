@@ -7,7 +7,10 @@ const API_BASE_URL = 'https://aaklan-erp-backend.onrender.com/api';
 // Create axios instance
 const api = axios.create({
   baseURL: API_BASE_URL,
-  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  }
 });
 
 // Request interceptor to add auth token
