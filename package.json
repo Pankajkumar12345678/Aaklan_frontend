@@ -1,0 +1,80 @@
+{
+  "name": "admin-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fullcalendar/daygrid": "^6.1.17",
+    "@fullcalendar/react": "^6.1.17",
+    "@react-jvectormap/world": "^1.1.2",
+    "@reduxjs/toolkit": "^2.9.2",
+    "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.1",
+    "@tippyjs/react": "^4.2.6",
+    "@uiw/react-md-editor": "^4.0.1",
+    "apexcharts": "^4.0.0",
+    "axios": "^1.12.2",
+    "chart.js": "^4.4.1",
+    "classnames": "^2.5.1",
+    "jquery": "^3.7.1",
+    "lucide-react": "^0.548.0",
+    "mdbreact": "^5.2.0",
+    "moment": "^2.29.4",
+    "react": "^18.3.1",
+    "react-apexcharts": "^1.4.1",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-chartjs-2": "^5.2.0",
+    "react-circular-progressbar": "^2.2.0",
+    "react-ckeditor-component": "^1.1.0",
+    "react-datepicker": "^4.25.0",
+    "react-dom": "^18.3.1",
+    "react-dropzone": "^14.3.8",
+    "react-hot-toast": "^2.6.0",
+    "react-icons": "^4.12.0",
+    "react-jvectormap": "^0.0.15",
+    "react-metismenu": "^1.4.0",
+    "react-nestable": "^2.0.0",
+    "react-pro-sidebar": "^1.1.0-alpha.1",
+    "react-redux": "^9.0.4",
+    "react-router-dom": "^6.21.0",
+    "react-scripts": "^5.0.1",
+    "react-sparklines": "^1.7.0",
+    "react-table": "^7.8.0",
+    "react-tooltip": "^5.28.1",
+    "reactstrap": "^9.2.3",
+    "redux": "^5.0.0",
+    "redux-thunk": "^3.1.0",
+    "sweetalert2": "^11.21.0",
+    "sweetalert2-react-content": "^5.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "node --max-old-space-size=4096 node_modules/.bin/react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.3.0",
+    "autoprefixer": "^10.4.16",
+    "css-loader": "^6.8.1",
+    "html-webpack-plugin": "^5.5.4",
+    "postcss": "^8.4.32",
+    "style-loader": "^3.3.3",
+    "tailwindcss": "^3.3.6"
+  }
+}
