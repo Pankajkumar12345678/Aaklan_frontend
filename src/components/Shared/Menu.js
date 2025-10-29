@@ -8,7 +8,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import DefaultLink from './DefaultLink';
 import Header from '../Shared/Header';
 import Footer from '../Shared/Footer';
-import RoutesConfig from '../Route'; // Renamed to avoid confusion with Routes component
+import RoutesConfig from '../Route';
 import {
   openLeftSidebarAction,
   openRightSidebarAction,

@@ -145,9 +145,9 @@ const PageProfile = () => {
 								{/* Tab 3 - Profile (Sirf 3 fields + Account Information) */}
 								<TabPane tabId={3} className={classnames(['fade show'])}>
 									{/* Profile Edit Form */}
-									<div className="card btn-primary btn-simple rounded-lg ">
+									<div className="card rounded-lg ">
 										<div className="card-header">
-											<h3 className="card-title text-dark">
+											<h3 className="card-title text-muted">
 												<User className="h-5 w-5 inline mr-2" />
 												Edit Profile
 											</h3>
@@ -155,13 +155,13 @@ const PageProfile = () => {
 										<div className="card-body form-horizontal">
 											<form onSubmit={handleProfileUpdate}>
 												<div className="form-group mb-4">
-													<label className="text-dark mb-2 d-block text-title ">
-														<User className="h-4 w-4 inline mr-1 btn-primary btn-simple rounded-lg" />
+													<label className=" mb-2 d-block text-title">
+														<User className="h-4 w-4 inline mr-1" />
 														Full Name <span className="text-danger">*</span>
 													</label>
 													<input
 														type="text"
-														className="form-control border-2 bg-light px-3 py-2 rounded  "
+														className="form-control border-2 px-3 py-2 rounded  "
 														value={profileData.name}
 														onChange={(e) =>
 															setProfileData((prev) => ({ ...prev, name: e.target.value }))
@@ -171,13 +171,13 @@ const PageProfile = () => {
 												</div>
 
 												<div className="form-group mb-4">
-													<label className="text-dark mb-2 d-block text-title">
-														<Mail className="h-4 w-4 inline mr-1 btn-primary btn-simple rounded-lg" />
+													<label className=" mb-2 d-block text-title">
+														<Mail className="h-3 w-3 inline mr-1" /> {/* btn-primary btn-simple rounded-circle */}
 														Email Address <span className="text-danger">*</span>
 													</label>
 													<input
 														type="email"
-														className="form-control border-2 bg-light px-3 py-2 rounded"
+														className="form-control border-2 px-3 py-2 rounded"
 														value={profileData.email}
 														onChange={(e) =>
 															setProfileData((prev) => ({ ...prev, email: e.target.value }))
@@ -187,13 +187,13 @@ const PageProfile = () => {
 												</div>
 
 												<div className="form-group mb-4">
-													<label className="text-dark mb-2 d-block text-title">
-														<Building className="h-4 w-4 inline mr-1 btn-primary btn-simple rounded-lg" />
+													<label className=" mb-2 d-block text-title">
+														<Building className="h-4 w-4 inline mr-1 " />
 														Organization
 													</label>
 													<input
 														type="text"
-														className="form-control border-2 bg-light px-3 py-2 rounded"
+														className="form-control border-2 px-3 py-2 rounded"
 														value={profileData.organization}
 														onChange={(e) =>
 															setProfileData((prev) => ({
@@ -205,7 +205,7 @@ const PageProfile = () => {
 												</div>
 
 												<div className="card-footer text-right">
-													<button type="submit" className="btn btn-outline-sucess text-white btn-primary" disabled={loading}>
+													<button type="submit" className="btn btn-outline-primary" disabled={loading}>
 														<Save className="h-4 w-4 mr-1" />
 														{loading ? "Updating..." : "Update Profile"}
 													</button>
@@ -215,9 +215,9 @@ const PageProfile = () => {
 										</div>
 									</div>
 
-									<div className="card mt-4 btn-primary btn-simple rounded-lg">
+									<div className="card mt-4 border rounded-lg">
 										<div className="card-header">
-											<h3 className="card-title text-dark">
+											<h3 className="card-title text-muted">
 												<Shield className="h-5 w-5 inline mr-2" />
 												Account Information
 											</h3>
@@ -226,15 +226,15 @@ const PageProfile = () => {
 											<div className="row ">
 												{/* Basic Information */}
 												<div className="col-md-6 mb-4 ">
-													<div className="d-flex align-items-center p-3 rounded-lg border btn-primary btn-simple rounded-lg shadow-md" style={{ borderColor: '#bae6fd' }}>
+													<div className="d-flex align-items-center p-3 rounded-lg border rounded-lg shadow-md">
 														<div className="mr-3">
-															<div className="bg-primary rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
+															<div className="btn-primary rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
 																<User className="h-5 w-5 text-white" />
 															</div>
 														</div>
 														<div>
-															<label className=" text-title mb-1 text-dark">Full Name</label>
-															<p className="mb-0 font-semibold text-dark">
+															<label className=" text-title mb-1">Full Name</label>
+															<p className="mb-0 font-semibold">
 																{user?.name || 'N/A'}
 															</p>
 														</div>
@@ -242,15 +242,15 @@ const PageProfile = () => {
 												</div>
 
 												<div className="col-md-6 mb-4">
-													<div className="d-flex align-items-center p-3 rounded-lg border btn-primary btn-simple rounded-lg shadow-md" style={{ borderColor: '#bae6fd' }}>
+													<div className="d-flex align-items-center p-3 rounded-lg border rounded-lg shadow-md">
 														<div className="mr-3">
-															<div className="bg-info rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
+															<div className="btn-primary rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
 																<Mail className="h-5 w-5 text-white" />
 															</div>
 														</div>
 														<div>
-															<label className="text-dark text-title mb-1">Email</label>
-															<p className="mb-0 font-semibold text-dark">
+															<label className=" text-title mb-1">Email</label>
+															<p className="mb-0 font-semibold ">
 																{user?.email || 'N/A'}
 															</p>
 														</div>
@@ -258,43 +258,43 @@ const PageProfile = () => {
 												</div>
 
 												<div className="col-md-6 mb-4">
-													<div className="d-flex align-items-center p-3 rounded-lg border btn-primary btn-simple rounded-lg shadow-md" style={{ borderColor: '#bae6fd' }}>
+													<div className="d-flex align-items-center p-3 rounded-lg border rounded-lg shadow-md">
 														<div className="mr-3">
-															<div className="bg-success rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
+															<div className="btn-primary rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
 																<Shield className="h-5 w-5 text-white" />
 															</div>
 														</div>
 														<div>
-															<label className="text-title text-dark mb-1">Role</label>
-															<p className="mb-0 font-semibold text-success capitalize">{user?.role || 'User'}</p>
+															<label className="text-title  mb-1">Role</label>
+															<p className="mb-0 font-semibold capitalize">{user?.role || 'User'}</p>
 														</div>
 													</div>
 												</div>
 
 												<div className="col-md-6 mb-4">
-													<div className="d-flex align-items-center p-3 rounded-lg border btn-primary btn-simple rounded-lg shadow-md" style={{ borderColor: '#bae6fd' }}>
+													<div className="d-flex align-items-center p-3 rounded-lg border rounded-lg shadow-md" >
 														<div className="mr-3">
-															<div className="bg-warning rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
+															<div className="btn-primary rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
 																<Building className="h-5 w-5 text-white" />
 															</div>
 														</div>
 														<div>
-															<label className="text-title text-dark mb-1">Organization</label>
-															<p className="mb-0 font-semibold text-dark">{user?.organization || 'N/A'}</p>
+															<label className="text-title  mb-1">Organization</label>
+															<p className="mb-0 font-semibold">{user?.organization || 'N/A'}</p>
 														</div>
 													</div>
 												</div>
 
 												<div className="col-md-6 mb-4">
-													<div className="d-flex align-items-center p-3 rounded-lg border btn-primary btn-simple rounded-lg shadow-md" style={{ borderColor: '#bae6fd' }}>
+													<div className="d-flex align-items-center p-3 rounded-lg border rounded-lg shadow-md">
 														<div className="mr-3">
-															<div className="bg-purple rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
+															<div className="btn-primary rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
 																<Calendar className="h-5 w-5 text-white" />
 															</div>
 														</div>
 														<div>
-															<label className="text-title text-dark mb-1">Last Login</label>
-															<p className="mb-0 font-semibold text-dark">
+															<label className="text-title mb-1">Last Login</label>
+															<p className="mb-0 font-semibold">
 																{user?.lastLogin ? new Date(user.lastLogin).toLocaleString() : 'N/A'}
 															</p>
 														</div>
@@ -304,7 +304,7 @@ const PageProfile = () => {
 
 											{/* Key Permissions Summary */}
 											<div className="mt-4 pt-4 border-top">
-												<h5 className="font-semibold mb-3 text-dark">
+												<h5 className="mb-3">
 													<Shield className="h-4 w-4 inline mr-2" />
 													Key Permissions
 												</h5>
@@ -313,16 +313,16 @@ const PageProfile = () => {
 													{/* AI Access */}
 													{user?.permissions?.ai?.generate && (
 														<div className="col-md-6 mb-3">
-															<div className="d-flex align-items-center p-3 rounded-lg border btn-primary btn-simple rounded-lg shadow-md" style={{ borderColor: '#d1f2d1' }}>
+															<div className="d-flex align-items-center p-3 rounded-lg border rounded-lg shadow-md">
 																<div className="mr-3 ">
-																	<div className="bg-success rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
+																	<div className="btn-primary rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
 																		<svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 																			<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
 																		</svg>
 																	</div>
 																</div>
 																<div>
-																	<label className="text-title text-dark mb-1">AI Generation</label>
+																	<label className="text-title mb-1">AI Generation</label>
 																	<p className="mb-0 font-semibold text-success text-muted">
 																		{user?.permissions?.ai?.dailyLimit || 0} daily credits
 																	</p>
@@ -334,9 +334,9 @@ const PageProfile = () => {
 													{/* Admin Access */}
 													{user?.permissions?.admin?.dashboard && (
 														<div className="col-md-6 mb-3">
-															<div className="d-flex align-items-center p-3 rounded-lg border btn-primary btn-simple rounded-lg shadow-md" style={{ borderColor: '#fecaca' }}>
+															<div className="d-flex align-items-center p-3 border rounded-lg  shadow-md">
 																<div className="mr-3">
-																	<div className="bg-danger rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
+																	<div className="btn-primary rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
 																		<svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 																			<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
 																			<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -344,8 +344,8 @@ const PageProfile = () => {
 																	</div>
 																</div>
 																<div>
-																	<label className="text-title text-dark mb-1">Admin Access</label>
-																	<p className="mb-0 font-semibold text-danger text-muted">Full System Access</p>
+																	<label className="text-title mb-1">Admin Access</label>
+																	<p className="mb-0 font-semibold">Full System Access</p>
 																</div>
 															</div>
 														</div>
@@ -354,17 +354,17 @@ const PageProfile = () => {
 													{/* Templates Count */}
 													{user?.permissions?.templates?.access && (
 														<div className="col-md-6 mb-3">
-															<div className="d-flex align-items-center p-3 rounded-lg border btn-primary btn-simple rounded-lg shadow-md" style={{ borderColor: '#bae6fd' }}>
+															<div className="d-flex align-items-center p-3 rounded-lg border shadow-md">
 																<div className="mr-3">
-																	<div className="bg-info rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
+																	<div className="btn-primary rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
 																		<svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 																			<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
 																		</svg>
 																	</div>
 																</div>
 																<div>
-																	<label className="text-title text-dark mb-1">Template Access</label>
-																	<p className="mb-0 font-semibold text-info text-muted">
+																	<label className="text-title mb-1">Template Access</label>
+																	<p className="mb-0 font-semibold ">
 																		{user.permissions.templates.access.length} templates
 																	</p>
 																</div>
@@ -375,17 +375,17 @@ const PageProfile = () => {
 													{/* Export Options */}
 													{user?.permissions?.export && (
 														<div className="col-md-6 mb-3">
-															<div className="d-flex align-items-center p-3 rounded-lg border btn-primary btn-simple rounded-lg shadow-md" style={{  borderColor: '#fed7aa' }}>
+															<div className="d-flex align-items-center p-3 rounded-lg border rounded-lg shadow-md">
 																<div className="mr-3">
-																	<div className="bg-warning rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
+																	<div className="btn-primary rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
 																		<svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 																			<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
 																		</svg>
 																	</div>
 																</div>
 																<div>
-																	<label className="text-title text-dark mb-1">Export Options</label>
-																	<p className="mb-0 font-semibold text-warning text-muted">
+																	<label className="text-title mb-1">Export Options</label>
+																	<p className="mb-0 font-semibold">
 																		{Object.values(user.permissions.export).filter(Boolean).length} formats
 																	</p>
 																</div>
@@ -397,41 +397,41 @@ const PageProfile = () => {
 
 											{/* Quick Stats */}
 											<div className="mt-4 pt-4 border-top">
-												<h5 className="font-semibold mb-3 text-dark">
+												<h5 className="mb-3 ">
 													Quick Stats
 												</h5>
 
 												<div className="row text-center">
-													<div className="col-4">
-														<div className="p-2">
-															<div className="bg-primary text-white rounded-circle mx-auto mb-2 d-flex align-items-center justify-content-center" style={{ width: '50px', height: '50px' }}>
+													<div className="col-3">
+														<div className="card p-2">
+															<div className="btn-primary text-white rounded-circle mx-auto mb-2 d-flex align-items-center justify-content-center" style={{ width: '50px', height: '50px' }}>
 																<svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 																	<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
 																</svg>
 															</div>
-															<label className="text-title text-dark">Templates</label>
+															<label className="text-title">Templates</label>
 															<p className="mb-0 font-semibold">{user?.permissions?.templates?.access?.length || 0}</p>
 														</div>
 													</div>
-													<div className="col-4">
-														<div className="p-2">
-															<div className="bg-success text-white rounded-circle mx-auto mb-2 d-flex align-items-center justify-content-center" style={{ width: '50px', height: '50px' }}>
+													<div className="col-3">
+														<div className="card p-2">
+															<div className="btn-primary text-white rounded-circle mx-auto mb-2 d-flex align-items-center justify-content-center" style={{ width: '50px', height: '50px' }}>
 																<svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 																	<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
 																</svg>
 															</div>
-															<label className="text-title text-dark">AI Credits</label>
+															<label className="text-title ">AI Credits</label>
 															<p className="mb-0 font-semibold">{user?.permissions?.ai?.dailyLimit || 0}</p>
 														</div>
 													</div>
-													<div className="col-4">
-														<div className="p-2">
-															<div className="bg-info text-white rounded-circle mx-auto mb-2 d-flex align-items-center justify-content-center" style={{ width: '50px', height: '50px' }}>
+													<div className="col-3">
+														<div className="card p-2">
+															<div className="btn-primary text-white rounded-circle mx-auto mb-2 d-flex align-items-center justify-content-center" style={{ width: '50px', height: '50px' }}>
 																<svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 																	<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
 																</svg>
 															</div>
-															<label className="text-title text-dark">Export Formats</label>
+															<label className="text-title">Export Formats</label>
 															<p className="mb-0 font-semibold">
 																{user?.permissions?.export ? Object.values(user.permissions.export).filter(Boolean).length : 0}
 															</p>
@@ -447,7 +447,7 @@ const PageProfile = () => {
 								<TabPane tabId={4} className={classnames(['fade show'])}>
 									<div className="card">
 										<div className="card-header">
-											<h3 className="card-title">
+											<h3 className="card-title text-muted">
 												<Lock className="h-5 w-5 inline mr-2" />
 												Change Password
 											</h3>

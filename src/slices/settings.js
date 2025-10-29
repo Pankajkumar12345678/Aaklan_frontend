@@ -17,7 +17,7 @@ const initialState = {
 	isMinSidebar: false,
 	isDarkSidebar: false,
 	isIconColor: false,
-	isGradientColor: true,
+	isGradientColor: false,
 	isBoxShadow: false,
 	isBoxLayout: false,
 	isRtl: false,

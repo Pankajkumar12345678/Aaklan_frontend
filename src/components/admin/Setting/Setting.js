@@ -69,9 +69,9 @@ const Setting = () => {
 	const PermissionCategory = ({ title, icon: Icon, category, permissions }) => (
 		<div className="card mb-4 shadow-sm border-0 ">
 			<div className="card-header bg-gradient-primary text-white py-3 btn-primary btn-simple">
-				<div className="d-flex align-items-center">
+				<div className="d-flex align-items-center card-title text-white">
 					<Icon className="h-5 w-5 text-white mr-3" />
-					<h5 className="mb-0 font-weight-bold">{title}</h5>
+					<h5 className="mb-0 card-title text-white font-weight-bold">{title}</h5>
 				</div>
 			</div>
 			<div className="card-body p-0">
@@ -173,7 +173,7 @@ const Setting = () => {
 						<div className="header-action">
 							<h1 className="page-title">Settings</h1>
 							<ol className="breadcrumb page-breadcrumb">
-								<li className="breadcrumb-item"><a href="#">Ericsson</a></li>
+								<li className="breadcrumb-item"><a href="#">Aaklan</a></li>
 								<li className="breadcrumb-item active" aria-current="page">Settings</li>
 							</ol>
 						</div>
@@ -212,15 +212,15 @@ const Setting = () => {
 							<div className="row">
 								<div className="col-12">
 									{/* Header Section */}
-									<div className="card mb-4 shadow-sm border-0">
-										<div className="card-body py-4 btn-primary btn-simple rounded-lg">
+									<div className="card mb-4 border shadow-sm">
+										<div className="card-body py-4 rounded-lg">
 											<div className="d-flex justify-content-between align-items-center flex-wrap ">
 												<div className="mb-3 mb-md-0 ">
-													<h2 className="card-title mb-1 text-dark">
-														<Shield className="h-5 w-5 inline mr-2 btn-primary btn-simple rounded-lg" />
+													<h2 className="card-title text-muted mb-1 ">
+														<Shield className="h-5 w-5 inline mr-2 rounded-circle" />
 														Role Permissions Management
 													</h2>
-													<p className="text-muted mb-0">
+													<p className="text-muted ml-4 mb-0">
 														Manage and configure permissions for different user roles
 													</p>
 												</div>
@@ -228,7 +228,7 @@ const Setting = () => {
 													<div className="d-flex gap-2 flex-wrap">
 														<button
 															onClick={handleCancel}
-															className="btn btn-outline-secondary text-white btn-lg d-flex align-items-center mb-2"
+															className="btn btn-outline-secondary btn-lg d-flex align-items-center mb-2"
 														>
 															<ArrowLeft className="h-4 w-4 mr-2" />
 															Back to Roles
@@ -248,19 +248,19 @@ const Setting = () => {
 
 									{/* Role Selection Cards d-flex align-items-center p-3 rounded-lg border btn-primary btn-simple rounded-lg shadow-md" style={{ borderColor: '#bae6fd' }} */}
 									{!editingRole && (
-										<div className="card mb-4 shadow-md border-0  btn-primary btn-simple rounded-lg" >
-											<div className="card-header py-3 btn-primary btn-simple rounded-lg">
-												<h5 className="card-title mb-0 text-dark">Select Role to Manage</h5>
+										<div className="card mb-4 shadow-md border rounded-lg" >
+											<div className="card-header bg-light py-3  ">
+												<h5 className="card-title mb-0 text-muted">Select Role to Manage</h5>
 											</div>
 											<div className="card-body">
 												<div className="row "> {/*justify-content-center*/}
 													{permissions.map((role) => (
 														<div key={role.role} className="col-xl-3  col-lg-4 col-md-6 mb-4 ">
 															{/*  d-flex align-items-center p-3 rounded-lg border btn-primary btn-simple rounded-lg shadow-md" style={{ borderColor: '#bae6fd' }}  */}
-															<div className="card card-hover border shadow-sm h-100 transition-all " style={{ borderColor: '#bae6fd' }}>
-																<div className="card-body text-center d-flex flex-column p-4">
-																	<div className="avatar avatar-lg bg-gradient-primary text-white rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center" style={{width: '80px', height: '80px'}}>
-																		<Shield className="h-8 w-8" />
+															<div className="card card-hover border shadow-sm h-100 transition-all ">
+																<div className="card-body text-center">
+																	<div className=" mb-3 mx-auto">
+																		<Shield className="h-8 w-8" style={{width: '40px', height: '40px'}} />
 																	</div>
 																	<h4 className="card-title text-capitalize text-primary mb-2">{role.role}</h4>
 																	<p className="text-muted mb-3 flex-grow-1">
@@ -268,7 +268,7 @@ const Setting = () => {
 																	</p>
 																	<button
 																		onClick={() => handleEdit(role)}
-																		className="btn btn-primary border btn-block mt-auto py-2 d-flex align-items-center justify-content-center" 
+																		className="btn btn-primary btn-sm " 
 																	>
 																		<Edit className="h-4 w-4 mr-2" />
 																		Edit Permissions
@@ -286,16 +286,16 @@ const Setting = () => {
 									{editingRole && (
 										<>
 											{/* Role Info Banner */}
-											<div className="card bg-gradient-primary text-white mb-4 shadow border-0">
-												<div className="card-body py-4 btn-primary btn-simple rounded-lg">
+											<div className="card mb-4 shadow border">
+												<div className="card-body py-4 rounded-lg">
 													<div className="d-flex align-items-center flex-wrap ">
 														<div className="flex-shrink-0 mb-2 mb-md-0">
-															<div className=" bg-gradient-primary text-gradient-primary bg-opacity-20 rounded-circle p-3 mr-2">
+															<div className="text-gradient-primary bg-opacity-20  mr-2">
 																<Shield className="h-5 w-5 inline" />
 															</div>
 														</div>
 														<div className="flex-grow-1 ms-md-4 ">
-															<h4 className="mb-2">
+															<h4 className="card-title m-auto text-muted mb-2">
 																Editing Permissions for: <span className="text-warning text-capitalize">{editingRole.role}</span>
 															</h4>
 															{/* <p className="mb-0 opacity-90">
@@ -396,23 +396,23 @@ const Setting = () => {
 
 									{/* Current Permissions Overview */}
 									{!editingRole && permissions.length > 0 && (
-										<div className="card shadow-sm border-0">
-											<div className="card-header bg-light py-3 btn-primary btn-simple">
-												<h5 className="card-title mb-0 text-dark">Current Permissions Overview</h5>
+										<div className="card shadow-sm border">
+											<div className="card-header bg-light py-3">
+												<h5 className="card-title text-muted mb-0">Current Permissions Overview</h5>
 											</div>
-											<div className="card-body btn-primary btn-simple">
-												<div className="table-responsive btn-primary btn-simple">
+											<div className="card-body ">
+												<div className="table-responsive ">
 													<table className="table table-bordered table-hover mb-0">
 														<thead className="text-dark">
 															<tr>
-																<th className="align-middle text-dark">Role</th>
-																<th className="align-middle text-center text-dark">Templates</th>
-																<th className="align-middle text-center text-dark">Content</th>
-																<th className="align-middle text-center text-dark">AI</th>
-																<th className="align-middle text-center text-dark">Export</th>
-																<th className="align-middle text-center text-dark">Users</th>
-																<th className="align-middle text-center text-dark">Admin</th>
-																<th className="align-middle text-center text-dark">Actions</th>
+																<th className="align-middle font-weight-semibold">Role</th>
+																<th className="align-middle text-center font-weight-semibold ">Templates</th>
+																<th className="align-middle text-center font-weight-semibold ">Content</th>
+																<th className="align-middle text-center font-weight-semibold">AI</th>
+																<th className="align-middle text-center font-weight-semibold">Export</th>
+																<th className="align-middle text-center font-weight-semibold">Users</th>
+																<th className="align-middle text-center font-weight-semibold">Admin</th>
+																<th className="align-middle text-center font-weight-semibold">Actions</th>
 															</tr>
 														</thead>
 														<tbody>
@@ -452,7 +452,7 @@ const Setting = () => {
 																	<td className="align-middle text-center">
 																		<button
 																			onClick={() => handleEdit(role)}
-																			className="btn btn-primary btn-sm d-flex align-items-center mx-auto"
+																			className="btn text-primary btn-sm"
 																		>
 																			<Edit className="h-3 w-3 mr-1" />
 																			Edit

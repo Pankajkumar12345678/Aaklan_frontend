@@ -273,14 +273,14 @@ const Templates = () => {
                             {/* Header Section */}
                             <div className="row mb-4">
                                 <div className="col-12">
-                                    <div className="card bg-gradient-primary text-white">
-                                        <div className="card-body btn-primary btn-simple rounded-lg">
+                                    <div className="card border">
+                                        <div className="card-body rounded-lg">
                                             <div className="row align-items-center ">
                                                 <div className="col-md-8 ">
-                                                    <h2 className="text-white mb-2">
+                                                    <h5 className="mb-2">
                                                         {canCreateTemplates ? 'Ready-to-Use Templates' : 'Template Access'}
-                                                    </h2>
-                                                    <p className="text-white-50 mb-0">
+                                                    </h5>
+                                                    <p className=" mb-0">
                                                         {canCreateTemplates
                                                             ? 'Choose from professionally designed templates to get started quickly'
                                                             : 'Contact administrator to get template creation access'
@@ -289,18 +289,18 @@ const Templates = () => {
                                                 </div>
                                                 <div className="col-md-4 text-right d-inline-block">
                                                     <div
-                                                        className="bg-white-20 rounded-lg p-3 d-inline-flex align-items-center justify-content-center"
+                                                        className="bg-white-20 rounded-lg p-1 d-inline-flex align-items-center justify-content-center border"
                                                         style={{
                                                             minWidth: 'auto',
                                                             width: 'fit-content',
                                                             maxWidth: '100%',
                                                         }}
                                                     >
-                                                        <h3 className="text-white mb-0 m-0 px-2" style={{ whiteSpace: 'nowrap' }}>
+                                                        <h5 className="mb-0 m-0 px-1" style={{ whiteSpace: 'nowrap' }}>
                                                             {filteredTemplates.length}
-                                                        </h3>
+                                                        </h5>
                                                     </div>
-                                                    <small className="text-white-50 d-block mt-1">
+                                                    <small className="d-block mt-1">
                                                         {canCreateTemplates ? 'Templates Available' : 'Accessible Templates'}
                                                     </small>
                                                 </div>
@@ -314,8 +314,8 @@ const Templates = () => {
                             {/* User Role Info */}
                             <div className="row mb-4">
                                 <div className="col-12">
-                                    <div className="card">
-                                        <div className="card-body btn-primary btn-simple rounded-lg">
+                                    <div className="card border">
+                                        <div className="card-body rounded-lg">
                                             <div className="row align-items-center">
                                                 <div className="col-md-8">
                                                     <h6 className="mb-1">Welcome, {user?.name}</h6>
@@ -325,7 +325,7 @@ const Templates = () => {
                                                         </span>
                                                         {!canCreateTemplates && (
                                                             <span className="text-warning ml-2 ">
-                                                                <Lock size={14} className="mr-1" />
+                                                                <Lock size={14} className="mr-1 " />
                                                                 Template creation restricted
                                                             </span>
                                                         )}
@@ -347,9 +347,9 @@ const Templates = () => {
                             {canCreateTemplates && getAccessibleTemplates().length > 0 && (
                                 <div className="row mb-4">
                                     <div className="col-md-8">
-                                        <div className="input-group input-group-lg">
+                                        <div className="input-group input-group">
                                             <div className="input-group-prepend">
-                                                <span className="input-group-text bg-white border-right-0 btn-primary btn-simple rounded-lg">
+                                                <span className="input-group-text bg-white border-right-0 rounded-lg">
                                                     <Search size={18} className="text-muted" />
                                                 </span>
                                             </div>
@@ -363,9 +363,9 @@ const Templates = () => {
                                         </div>
                                     </div>
                                     <div className="col-md-4">
-                                        <div className="input-group input-group-lg">
+                                        <div className="input-group input-group">
                                             <div className="input-group-prepend ">
-                                                <span className="input-group-text bg-white border-right-0 btn-primary btn-simple rounded-lg">
+                                                <span className="input-group-text bg-white border-right-0 rounded-lg">
                                                     <Filter size={18} className="text-muted " />
                                                 </span>
                                             </div>
@@ -399,8 +399,8 @@ const Templates = () => {
                                             <div className="col-12">
                                                 <div className="card border-warning">
                                                     <div className="card-body text-center py-5">
-                                                        <Lock size={64} className="text-warning mb-3 btn-primary btn-simple rounded-lg" />
-                                                        <h4 className="text-dark mb-3">Template Creation Restricted</h4>
+                                                        <Lock size={64} className="text-white mb-3 p-1 btn-primary btn-simple rounded-circle" />
+                                                        <h4 className="text-muted mb-3">Template Creation Restricted</h4>
                                                         <p className="text-muted mb-4">
                                                             You don't have permission to create templates. Please contact your administrator
                                                             to get access to template creation features.
@@ -452,44 +452,28 @@ const Templates = () => {
 
                                                     return (
                                                         <div key={template.key} className="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4">
-                                                            <div className={`card template-card h-100 border-0 shadow-md hover-lift`}>
+                                                            <div className={`card template-card h-100 border shadow-md hover-lift`}>
                                                                 <div className="card-body d-flex flex-column">
                                                                     {/* Header */}
-                                                                    <div className="d-flex justify-content-between align-items-center mb-3">
-                                                                        <div className={`template-icon bg-${color}-light text-${color} circle `}>
-                                                                            <Icon size={24} className="btn-primary btn-simple rounded-lg" />
+                                                                    <div className="d-flex justify-content-between align-items-center text-center m-auto mb-3">
+                                                                        <div className={`template-icon bg-${color}-light text-${color}  `}>
+                                                                            <Icon size={35} /> {/*className="btn-primary btn-simple rounded-circle object-contain"  */}
                                                                         </div>
-                                                                        <span className={`badge badge-${color} badge-pill`}>
-                                                                            {template.category}
-                                                                        </span>
                                                                     </div>
 
                                                                     {/* Content */}
-                                                                    <h5 className="card-title font-weight-bold mb-3">
+                                                                    <h6 className=" font-weight-bold mb-3 text-center">
                                                                         {template.title}
-                                                                    </h5>
-                                                                    <p className="card-text flex-grow-1">
+                                                                    </h6>
+                                                                    <p className="card-text flex-grow-1 text-center">
                                                                         {template.description}
                                                                     </p>
 
-
                                                                     {/* Footer */}
-                                                                    <div className="mt-auto">
-                                                                        <div className="d-flex justify-content-between align-items-center mb-3">
-                                                                            <small className="text-muted">
-                                                                                <i className="fe fe-grid mr-1"></i>
-                                                                                {template.fields?.length || 0} fields
-                                                                            </small>
-                                                                            {template.key === 'lesson_plan' && (
-                                                                                <small className="text-warning">
-                                                                                    <Star size={14} className="mr-1 card-title" />
-                                                                                    Popular
-                                                                                </small>
-                                                                            )}
-                                                                        </div>
+                                                                    <div className="m-auto"> 
                                                                         <button
                                                                             onClick={() => handleTemplateSelect(template.key, template.title)}
-                                                                            className={`btn btn-${color} btn-primary btn-simple btn-block btn-lg font-weight-semibold`}
+                                                                            className={`btn btn-primary btn-sm `}
                                                                         >
                                                                             Use Template
                                                                         </button>
@@ -538,11 +522,11 @@ const Templates = () => {
                                                         <h5 className=" mb-4 text-center">Quick Access</h5>
                                                         <div className="row">
                                                             <div className="col-md-4 mb-3 ">
-                                                                <div className="card border-0 shadow-sm text-center h-100 btn-primary btn-simple">
+                                                                <div className="card border shadow-sm text-center h-100">
                                                                     <div className="card-body py-4">
                                                                         <Zap className="text-warning mb-3" size={32} />
-                                                                        <h6 className=" text-dark mb-2">Quick Start</h6>
-                                                                        <p className="text-dark mb-3">
+                                                                        <h6 className=" text-warning mb-2">Quick Start</h6>
+                                                                        <p className="text-muted mb-3">
                                                                             Get started with our most popular template
                                                                         </p>
                                                                         <button
@@ -560,15 +544,15 @@ const Templates = () => {
                                                                 </div>
                                                             </div>
                                                             <div className="col-md-4 mb-3">
-                                                                <div className="card border-0 bg-white shadow-sm text-center h-100 btn-primary btn-simple ">
+                                                                <div className="card border shadow-sm text-center h-100 ">
                                                                     <div className="card-body py-4">
-                                                                        <Star className="text-white mb-3" size={32} />
-                                                                        <h6 className="text-dark mb-2">All Templates</h6>
-                                                                        <p className="text-dark mb-3">
+                                                                        <Star className="text-info mb-3" size={32} />
+                                                                        <h6 className="text-info mb-2">All Templates</h6>
+                                                                        <p className="text-muted mb-3">
                                                                             Browse all accessible templates
                                                                         </p>
                                                                         <button
-                                                                            className="btn btn-outline-info btn-sm text-white "
+                                                                            className="btn btn-outline-info btn-sm "
                                                                             onClick={() => {
                                                                                 setSearchTerm("");
                                                                                 setSelectedCategory("all");
@@ -580,15 +564,15 @@ const Templates = () => {
                                                                 </div>
                                                             </div>
                                                             <div className="col-md-4 mb-3">
-                                                                <div className="card border-0 bg-white shadow-sm text-center h-100 btn-primary btn-simple">
+                                                                <div className="card border shadow-sm text-center h-100">
                                                                     <div className="card-body py-4">
-                                                                        <FileText className="text-white mb-3" size={32} />
-                                                                        <h6 className="text-dark mb-2">Blank Template</h6>
-                                                                        <p className="text-dark mb-3">
+                                                                        <FileText className="text-success mb-3" size={32} />
+                                                                        <h6 className="text-success mb-2">Blank Template</h6>
+                                                                        <p className="text-muted mb-3">
                                                                             Start completely from scratch
                                                                         </p>
                                                                         <button
-                                                                            className="btn btn-outline-success btn-sm text-white "
+                                                                            className="btn btn-outline-success btn-sm"
                                                                             onClick={() => {
                                                                                 if (hasTemplateAccess('blank')) {
                                                                                     handleTemplateSelect('blank', 'Blank Template');

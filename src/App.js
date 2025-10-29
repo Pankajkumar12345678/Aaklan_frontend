@@ -1,5 +1,4 @@
-
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import Layout from './components/Shared/Layout';
@@ -9,7 +8,7 @@ import ForgotPassword from './components/Authentication/forgotpassword';
 import NotFound from './components/Authentication/404';
 import InternalServer from './components/Authentication/500';
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 import {
   notificationMenuAction,
@@ -21,35 +20,60 @@ import {
   profileMenuAction,
   dropDownMenuAction
 } from './actions/settingsAction';
+import { getCurrentUser } from './slices/authSlice';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      closeRightbarClass: "close_rightbar"
+      closeRightbarClass: "close_rightbar",
+      loading: true
     };
   }
 
-  componentDidMount() {
-    // Your existing logic
+  async componentDidMount() {
     const ww = document.body.clientWidth;
     if (ww < 1530) {
       this.setState({ closeRightbarClass: "close_rightbar" });
     } else {
       this.setState({ closeRightbarClass: "" });
     }
+    
     document.addEventListener("mousedown", this.hideLeftSidebarProxy, false);
-
-    // Add ResizeObserver error listener here
     window.addEventListener("error", this.handleResizeObserverError);
+
+    // Check authentication on app load
+    await this.checkAuthentication();
+  }
+
+  componentDidUpdate(prevProps) {
+    // Agar authentication state change hua hai to loading stop karo
+    if (prevProps.isAuthenticated !== this.props.isAuthenticated) {
+      this.setState({ loading: false });
+    }
   }
 
   componentWillUnmount() {
     document.removeEventListener("mousedown", this.hideLeftSidebarProxy, false);
-
-    // Remove ResizeObserver error listener here
     window.removeEventListener("error", this.handleResizeObserverError);
   }
+
+  checkAuthentication = async () => {
+    const token = localStorage.getItem('token'); 
+    console.log("Token found:", !!token);
+    
+    if (token) {
+      try {
+        const { dispatch } = this.props;
+        await dispatch(getCurrentUser()).unwrap();
+      } catch (error) {
+        console.error("Authentication failed:", error);
+        // Token invalid hai, remove kar do
+        localStorage.removeItem('token');
+      }
+    }
+    this.setState({ loading: false });
+  };
 
   handleResizeObserverError = (event) => {
     if (
@@ -82,8 +106,30 @@ class App extends Component {
     }
   };
 
+  // Protected Route Component
+  ProtectedRoute = ({ children }) => {
+    const { loading } = this.state;
+    const { isAuthenticated } = this.props;
+    
+    if (loading) {
+      return <div className="loading-spinner">Loading...</div>;
+    }
+    return isAuthenticated ? children : <Navigate to="/login" replace />;
+  };
+
+  // Public Route Component
+  PublicRoute = ({ children }) => {
+    const { loading } = this.state;
+    const { isAuthenticated } = this.props;
+    
+    if (loading) {
+      return <div className="loading-spinner">Loading...</div>;
+    }
+    return !isAuthenticated ? children : <Navigate to="/" replace />;
+  };
+
   render() {
-    const { closeRightbarClass } = this.state;
+    const { closeRightbarClass, loading } = this.state;
     const {
       isBoxLayout,
       gradientColor,
@@ -94,8 +140,19 @@ class App extends Component {
       toggleLeftBar,
       themeColor,
       fontType,
-      iconColor
+      iconColor,
+      isAuthenticated
     } = this.props;
+
+    console.log("Auth status:", isAuthenticated, "Loading:", loading);
+
+    if (loading) {
+      return (
+        <div className="loading-container">
+          <div className="loading-spinner">Loading...</div>
+        </div>
+      );
+    }
 
     return (
       <div
@@ -116,12 +173,45 @@ class App extends Component {
       >
         <Router>
           <Routes>
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/forgotpassword" element={<ForgotPassword />} />
+            {/* Public Routes */}
+            <Route 
+              path="/login" 
+              element={
+                <this.PublicRoute>
+                  <Login />
+                </this.PublicRoute>
+              } 
+            />
+            <Route 
+              path="/signup" 
+              element={
+                <this.PublicRoute>
+                  <SignUp />
+                </this.PublicRoute>
+              } 
+            />
+            <Route 
+              path="/forgotpassword" 
+              element={
+                <this.PublicRoute>
+                  <ForgotPassword />
+                </this.PublicRoute>
+              } 
+            />
+            
+            {/* Error Pages */}
             <Route path="/notfound" element={<NotFound />} />
             <Route path="/internalserver" element={<InternalServer />} />
-            <Route path="*" element={<Layout />} /> {/* fallback route */}
+            
+            {/* Protected Routes */}
+            <Route 
+              path="*" 
+              element={
+                <this.ProtectedRoute>
+                  <Layout />
+                </this.ProtectedRoute>
+              } 
+            />
           </Routes>
         </Router>
       </div>
@@ -139,7 +229,9 @@ const mapStateToProps = (state) => ({
   gradientColor: state.settings.isGradientColor,
   isBoxLayout: state.settings.isBoxLayout,
   rtl: state.settings.isRtl,
-  fontType: state.settings.isFont
+  fontType: state.settings.isFont,
+  isAuthenticated: state.auth.isAuthenticated, // Redux state se le rahe hain
+  user: state.auth.user
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -150,7 +242,8 @@ const mapDispatchToProps = (dispatch) => ({
   mailMenuAction: (e) => dispatch(mailMenuAction(e)),
   profileMenuAction: (e) => dispatch(profileMenuAction(e)),
   dropDownMenuAction: (e) => dispatch(dropDownMenuAction(e)),
-  pagesMenuAction: (e) => dispatch(pagesMenuAction(e))
+  pagesMenuAction: (e) => dispatch(pagesMenuAction(e)),
+  dispatch
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
