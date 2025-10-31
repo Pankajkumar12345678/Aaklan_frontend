@@ -121,6 +121,7 @@ const TemplateForm = () => {
                 icon: "success",
                 confirmButtonColor: "#28a745",
             });
+            navigate(`/templates`);
         } catch (error) {
             Swal.fire({
                 title: "Error!",
@@ -128,6 +129,7 @@ const TemplateForm = () => {
                 icon: "error",
                 confirmButtonColor: "#dc3545",
             });
+
         } finally {
             setAiLoading(false);
         }

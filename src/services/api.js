@@ -2,7 +2,9 @@
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-const API_BASE_URL = 'https://aaklan-erp-backend.onrender.com/api';
+//const API_BASE_URL = 'https://aaklan-erp-backend.onrender.com/api';
+
+const API_BASE_URL = 'http://localhost:5000/api';
 
 // Create axios instance
 const api = axios.create({
@@ -88,6 +90,7 @@ export const creationService = {
   duplicate: (id) => api.post(`/my-creations/${id}/duplicate`),
   share: (id) => api.post(`/my-creations/${id}/share`),
   getVersions: (id) => api.get(`/my-creations/${id}/versions`),
+  delete: (id) => api.delete(`/my-creations/${id}`),
 };
 
 // Export API

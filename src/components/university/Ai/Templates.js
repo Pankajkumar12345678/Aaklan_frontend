@@ -6,6 +6,7 @@ import { TabContent, TabPane, Nav, NavLink, NavItem } from "reactstrap";
 import classnames from "classnames";
 import { useSelector } from "react-redux";
 import { templateService } from "../../../services/api";
+
 import {
     BookOpen,
     FileText,
@@ -20,6 +21,7 @@ import {
     Star,
     Lock
 } from "lucide-react";
+import MyCreations from "./MyCreations";
 
 const Templates = () => {
     const [activeTab, setActiveTab] = useState(1);
@@ -29,6 +31,7 @@ const Templates = () => {
     const [selectedCategory, setSelectedCategory] = useState("all");
     const navigate = useNavigate();
     const { user, permissions } = useSelector((state) => state.auth);
+
 
     useEffect(() => {
         fetchTemplates();
@@ -247,8 +250,8 @@ const Templates = () => {
                                     className={classnames({ active: activeTab === 1 })}
                                     onClick={() => setActiveTab(1)}
                                 >
-                                    <i className="fe fe-layers mr-1"></i>
-                                    Templates
+                                    <i className="fe fe-list mr-1"></i>
+                                    List View
                                 </NavLink>
                             </NavItem>
                             <NavItem>
@@ -256,8 +259,8 @@ const Templates = () => {
                                     className={classnames({ active: activeTab === 2 })}
                                     onClick={() => setActiveTab(2)}
                                 >
-                                    <i className="fe fe-list mr-1"></i>
-                                    List View
+                                    <i className="fe fe-layers mr-1"></i>
+                                    Templates
                                 </NavLink>
                             </NavItem>
                         </Nav>
@@ -269,7 +272,7 @@ const Templates = () => {
                 <div className="container-fluid">
                     <TabContent activeTab={activeTab}>
                         
-                        <TabPane tabId={1} className={classnames(["fade show"])}>
+                        <TabPane tabId={2} className={classnames(["fade show"])}>
                             {/* Header Section */}
                             <div className="row mb-4">
                                 <div className="col-12">
@@ -349,7 +352,7 @@ const Templates = () => {
                                     <div className="col-md-8">
                                         <div className="input-group input-group">
                                             <div className="input-group-prepend">
-                                                <span className="input-group-text bg-white border-right-0 rounded-lg">
+                                                <span className="input-group-text border-right-0 rounded-lg">
                                                     <Search size={18} className="text-muted" />
                                                 </span>
                                             </div>
@@ -365,7 +368,7 @@ const Templates = () => {
                                     <div className="col-md-4">
                                         <div className="input-group input-group">
                                             <div className="input-group-prepend ">
-                                                <span className="input-group-text bg-white border-right-0 rounded-lg">
+                                                <span className="input-group-text border-right-0 rounded-lg">
                                                     <Filter size={18} className="text-muted " />
                                                 </span>
                                             </div>
@@ -595,8 +598,8 @@ const Templates = () => {
                             )}
                         </TabPane>
 
-                        <TabPane tabId={2} className={classnames(["fade show"])}>
-                            <div className="card">
+                        <TabPane tabId={1} className={classnames(["fade show"])}>
+                            {/* <div className="card">
                                 <div className="card-header">
                                     <h3 className="card-title">Holiday List</h3>
                                 </div>
@@ -636,7 +639,8 @@ const Templates = () => {
                                         </table>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
+                            <MyCreations tabId={1} setActiveTab={setActiveTab} activeTab={activeTab} />
                         </TabPane>
                     </TabContent>
                 </div>

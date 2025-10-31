@@ -147,11 +147,18 @@ class App extends Component {
     console.log("Auth status:", isAuthenticated, "Loading:", loading);
 
     if (loading) {
-      return (
-        <div className="loading-container">
-          <div className="loading-spinner">Loading...</div>
-        </div>
-      );
+        return (
+            <div className="section-body">
+                <div className="container-fluid">
+                    <div className="d-flex justify-content-center align-items-center" style={{ height: '400px' }}>
+                        <div className="spinner-border text-primary" role="status">
+                            <span className="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+      
     }
 
     return (

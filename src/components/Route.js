@@ -11,6 +11,7 @@ import Holiday from './university/Holiday/Holiday';
 
 import Templates from './university/Ai/Templates';
 import TemplateForm from './university/Ai/TemplateForm';
+import Editor from './university/Ai/Editor';
 
 import Calendar from './university/Calendar/Calendar';
 import ChatApp from './university/ChatApp/ChatApp';
@@ -182,17 +183,20 @@ const Routes = [
       pageTitle: "Templates",
       component: Templates
     },
-
+    {
+      path: "/editor/:id",
+      name: 'editors',
+      exact: true,
+      pageTitle: "Editor",
+      component: Editor
+    },
     {
       path: "/create/:templateType",
-      name: 'templates',
+      name: 'templateForm',
       exact: true,
-      pageTitle: "Templates",
+      pageTitle: "TemplateForm",
       component: TemplateForm
-    },
-
-    // 
-
+    }, 
     {
         path: "/library",
         name: 'library',
